@@ -13,11 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}',function (){
+    return view('layouts.vue');
+})->where('any','.*');
 
-Route::get('/tes', function () {
-    return "Halo, Selamat datang di anjeng";
-});
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
+//Route::get('/tes', function () {
+//    return "Halo, Selamat datang di anjeng";
+//});
+//
+//
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
