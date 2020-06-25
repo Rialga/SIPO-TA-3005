@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
         html, body {
@@ -69,13 +70,10 @@
             margin-bottom: 30px;
         }
     </style>
-
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 
     <div id="app"></div>
-    <script src="{{ mix('js/app.js') }}"></script>
 
 </body>
 </html>

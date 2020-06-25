@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2020 pada 19.24
+-- Waktu pembuatan: 25 Jun 2020 pada 15.46
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.4.2
 
@@ -206,7 +206,7 @@ CREATE TABLE `status_sewa` (
 --
 
 CREATE TABLE `user` (
-  `user_nik` varchar(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `user_role` int(11) NOT NULL,
   `user_nama` varchar(30) NOT NULL,
   `user_mail` varchar(25) NOT NULL,
@@ -308,7 +308,9 @@ ALTER TABLE `status_sewa`
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_nik`),
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_phone` (`user_phone`),
+  ADD UNIQUE KEY `user_mail` (`user_mail`),
   ADD KEY `user_role` (`user_role`);
 
 --
@@ -349,7 +351,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT untuk tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `status_alat`
@@ -402,7 +404,7 @@ ALTER TABLE `pengembalian`
 ALTER TABLE `penyewaan`
   ADD CONSTRAINT `penyewaan_ibfk_1` FOREIGN KEY (`sewa_jenis`) REFERENCES `jenis_sewa` (`jenis_id`),
   ADD CONSTRAINT `penyewaan_ibfk_2` FOREIGN KEY (`sewa_status`) REFERENCES `status_sewa` (`status_id`),
-  ADD CONSTRAINT `penyewaan_ibfk_3` FOREIGN KEY (`sewa_user`) REFERENCES `user` (`user_nik`);
+  ADD CONSTRAINT `penyewaan_ibfk_3` FOREIGN KEY (`sewa_user`) REFERENCES `user` (`user_id`);
 
 --
 -- Ketidakleluasaan untuk tabel `user`

@@ -16,7 +16,7 @@ class Penyewaan extends Model
 
     // Koneksi field Foreign
     public function user() {
-        return $this->belongsTo('App\User', 'sewa_user', 'user_nik');
+        return $this->belongsTo('App\User', 'sewa_user', 'user_id');
     }
     public function jenis_sewa() {
         return $this->belongsTo('App\JenisSewa', 'sewa_jenis', 'jenis_id');

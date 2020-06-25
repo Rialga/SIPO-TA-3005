@@ -1948,6 +1948,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App.vue"
 });
@@ -2065,6 +2066,52 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37682,79 +37729,92 @@ var render = function() {
         staticClass: "navbar navbar-expand-md navbar-light bg-white shadow-sm"
       },
       [
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse",
-              attrs: { id: "navbarSupportedContent" }
-            },
-            [
-              _c(
-                "ul",
-                { staticClass: "navbar-nav mr-auto" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "home" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Home\n                        "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "navbar-nav ml-auto" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "login" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Login\n                        "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "register" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Register\n                        "
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ]
-          )
-        ])
+        _c(
+          "div",
+          { staticClass: "container" },
+          [
+            _c(
+              "router-link",
+              { staticClass: "nav-link", attrs: { to: { name: "home" } } },
+              [
+                _vm._v(
+                  "\n                        Laravel\n                    "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse",
+                attrs: { id: "navbarSupportedContent" }
+              },
+              [
+                _c(
+                  "ul",
+                  { staticClass: "navbar-nav ml-auto" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "login" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Login\n                        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "register" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Register\n                        "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]
+            )
+          ],
+          1
+        )
       ]
     ),
     _vm._v(" "),
-    _c("br"),
-    _c("br"),
-    _vm._v(" "),
-    _c("div", { staticClass: "container" }, [_c("router-view")], 1)
+    _c("main", { staticClass: "py-4" }, [_c("router-view")], 1)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -37969,20 +38029,18 @@ var staticRenderFns = [
                     "label",
                     {
                       staticClass: "col-md-4 col-form-label text-md-right",
-                      attrs: { for: "name" }
+                      attrs: { for: "userid" }
                     },
-                    [_vm._v("Name")]
+                    [_vm._v("User ID")]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-6" }, [
                     _c("input", {
                       staticClass: "form-control",
                       attrs: {
-                        id: "name",
+                        id: "userid",
                         type: "text",
-                        name: "name",
-                        required: "",
-                        autocomplete: "name",
+                        name: "userid",
                         autofocus: ""
                       }
                     })
@@ -37994,19 +38052,54 @@ var staticRenderFns = [
                     "label",
                     {
                       staticClass: "col-md-4 col-form-label text-md-right",
-                      attrs: { for: "email" }
+                      attrs: { for: "usernama" }
                     },
-                    [_vm._v("Email Address")]
+                    [_vm._v("Nama Lengkap")]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-6" }, [
                     _c("input", {
                       staticClass: "form-control",
+                      attrs: { id: "usernama", type: "text", name: "usernama" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-4 col-form-label text-md-right",
+                      attrs: { for: "usermail" }
+                    },
+                    [_vm._v("E-mail")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { id: "usermail", type: "text", name: "usermail" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-4 col-form-label text-md-right",
+                      attrs: { for: "useralamat" }
+                    },
+                    [_vm._v("Alamat")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("textarea", {
+                      staticClass: "form-control",
                       attrs: {
-                        id: "email",
-                        type: "email",
-                        required: "",
-                        autocomplete: "email"
+                        id: "useralamat",
+                        type: "text",
+                        name: "useralamat"
                       }
                     })
                   ])
@@ -38017,7 +38110,77 @@ var staticRenderFns = [
                     "label",
                     {
                       staticClass: "col-md-4 col-form-label text-md-right",
-                      attrs: { for: "password" }
+                      attrs: { for: "userjob" }
+                    },
+                    [_vm._v("Pekerjaan")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { id: "userjob", type: "text", name: "userjob" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-4 col-form-label text-md-right",
+                      attrs: { for: "usernohp" }
+                    },
+                    [_vm._v("No HP")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { id: "usernohp", type: "number" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-4 col-form-label text-md-right",
+                      attrs: { for: "userrole" }
+                    },
+                    [_vm._v("Role")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { id: "userrole", name: "userrole" }
+                      },
+                      [
+                        _c("option", { attrs: { value: " " } }, [
+                          _vm._v("-Pilih Role-")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Admin")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Penyewa")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-4 col-form-label text-md-right",
+                      attrs: { for: "userpassword" }
                     },
                     [_vm._v("Password")]
                   ),
@@ -38026,9 +38189,9 @@ var staticRenderFns = [
                     _c("input", {
                       staticClass: "form-control",
                       attrs: {
-                        id: "password",
+                        id: "userpassword",
                         type: "password",
-                        name: "password",
+                        name: "userpassword",
                         required: ""
                       }
                     })
