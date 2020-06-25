@@ -2,17 +2,21 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+
+                <label class="col-md-4 col-form-label text-md-right" style="color: #0C9A9A">{{pesan}}</label> <br>
+
                 <div class="card">
                     <div class="card-header">Register</div>
 
                     <div class="card-body">
-                        <form method="POST" >
+
+                        <form @submit.prevent="register" id="fregis">
 
                             <div class="form-group row">
                                 <label for="userid" class="col-md-4 col-form-label text-md-right">User ID</label>
 
                                 <div class="col-md-6">
-                                    <input id="userid" type="text" class="form-control" name="userid"  autofocus>
+                                    <input id="userid" type="text" class="form-control" name="userid"  v-model="registerdata.user_id" autofocus>
 
                                  </div>
                             </div>
@@ -21,7 +25,7 @@
                                 <label for="usernama" class="col-md-4 col-form-label text-md-right">Nama Lengkap</label>
 
                                 <div class="col-md-6">
-                                    <input id="usernama" type="text" class="form-control" name="usernama">
+                                    <input id="usernama" type="text" class="form-control" name="usernama" v-model="registerdata.user_nama">
 
                                 </div>
                             </div>
@@ -29,7 +33,7 @@
                                 <label for="usermail" class="col-md-4 col-form-label text-md-right">E-mail</label>
 
                                 <div class="col-md-6">
-                                    <input id="usermail" type="text" class="form-control" name="usermail">
+                                    <input id="usermail" type="text" class="form-control" name="usermail" v-model="registerdata.user_mail">
 
                                 </div>
                             </div>
@@ -37,7 +41,7 @@
                                 <label for="useralamat" class="col-md-4 col-form-label text-md-right">Alamat</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="useralamat" type="text" class="form-control" name="useralamat"></textarea>
+                                    <textarea id="useralamat" type="text" class="form-control" name="useralamat" v-model="registerdata.user_alamat"></textarea>
 
                                 </div>
                             </div>
@@ -45,7 +49,7 @@
                                 <label for="userjob" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
 
                                 <div class="col-md-6">
-                                    <input id="userjob" type="text" class="form-control" name="userjob">
+                                    <input id="userjob" type="text" class="form-control" name="userjob" v-model="registerdata.user_job">
 
                                 </div>
                             </div>
@@ -55,7 +59,7 @@
                                 <label for="usernohp" class="col-md-4 col-form-label text-md-right">No HP</label>
 
                                 <div class="col-md-6">
-                                    <input id="usernohp" type="number" class="form-control">
+                                    <input id="usernohp" type="number" class="form-control" v-model="registerdata.user_phone">
 
                                 </div>
                             </div>
@@ -64,8 +68,7 @@
                                 <label for="userrole" class="col-md-4 col-form-label text-md-right">Role</label>
 
                                 <div class="col-md-6">
-                                    <select id="userrole" name="userrole" class="form-control">
-                                        <option value=" ">-Pilih Role-</option>
+                                    <select id="userrole" name="userrole" class="form-control" v-model="registerdata.user_role">
                                         <option value="1">Admin</option>
                                         <option value="2">Penyewa</option>
                                     </select>
@@ -86,7 +89,7 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" v-model="registerdata.user_password"  required>
                                 </div>
                             </div>
 
@@ -107,10 +110,27 @@
 
 <script>
     export default {
-        name: "Register.vue"
+        data(){
+          return{
+              registerdata: {},
+              pesan: ''
+          }
+        },
+        methods: {
+            register(){
+
+                this.axios
+                    .post('http://localhost:8000/api/auth/register', this.registerdata)
+                    .then(response => (
+                        console.log(response.data),
+                        this.pesan = response.data
+                     ))
+                    .catch(error => console.log(error))
+                    .finally(() => this.loading = false)
+
+                this.registerdata = ''
+            }
+        }
+
     }
 </script>
-
-<style scoped>
-
-</style>

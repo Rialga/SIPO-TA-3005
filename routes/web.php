@@ -18,15 +18,3 @@ Route::get('/{any}',function (){
 })->where('any','.*');
 
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Route::get('/tes', function () {
-//    return "Halo, Selamat datang di anjeng";
-//});
-//
-//
-//Auth::routes();
-//
-//Route::get('/home', 'HomeController@index')->name('home');
