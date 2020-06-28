@@ -2188,13 +2188,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.axios.post('http://localhost:8000/api/auth/register', this.registerdata).then(function (response) {
-        return console.log(response.data), _this.pesan = response.data;
+        return console.log(response.data), _this.pesan = response.data, _this.registerdata = {};
       })["catch"](function (error) {
-        return console.log(error);
+        return console.log(error), _this.pesan = response.data;
       })["finally"](function () {
         return _this.loading = false;
       });
-      this.registerdata = '';
     }
   }
 });

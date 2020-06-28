@@ -123,12 +123,16 @@
                     .post('http://localhost:8000/api/auth/register', this.registerdata)
                     .then(response => (
                         console.log(response.data),
-                        this.pesan = response.data
+                        this.pesan = response.data,
+                        this.registerdata = {}
                      ))
-                    .catch(error => console.log(error))
+                    .catch(error => (
+                        console.log(error),
+                        this.pesan = response.data
+                    ))
                     .finally(() => this.loading = false)
 
-                this.registerdata = ''
+
             }
         }
 
