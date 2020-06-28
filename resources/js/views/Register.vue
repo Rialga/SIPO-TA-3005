@@ -98,7 +98,12 @@
                                     <button type="submit" class="btn btn-primary">
                                         Register
                                     </button>
+
+                                    <router-link class="btn-link" :to="{name:'login'}">
+                                        sudah punya akun? Login disini!
+                                    </router-link>
                                 </div>
+
                             </div>
                         </form>
                     </div>

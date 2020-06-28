@@ -43,9 +43,9 @@
                                         Login
                                     </button>
 
-                                    <a class="btn btn-link">
-                                        Forgot Your Password?
-                                    </a>
+                                    <router-link class="btn-link" :to="{name:'register'}">
+                                            Belum punya akun? Buat disini!
+                                    </router-link>
 
                                 </div>
                             </div>
