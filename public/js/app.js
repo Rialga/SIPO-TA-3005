@@ -2040,19 +2040,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Login.vue"
+  data: function data() {
+    return {
+      user_id: '',
+      user_password: ''
+    };
+  },
+  methods: {
+    login: function login() {}
+  }
 });
 
 /***/ }),
@@ -37919,48 +37916,57 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("form", { attrs: { method: "POST" } }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row mb-0" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-md-8 offset-md-4" },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    Login\n                                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn-link",
-                        attrs: { to: { name: "register" } }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Belum punya akun? Buat disini!\n                                "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ])
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.login($event)
+                  }
+                }
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row mb-0" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-md-8 offset-md-4" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Login\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn-link",
+                          attrs: { to: { name: "register" } }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                        Belum punya akun? Buat disini!\n                                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ]
+            )
           ])
         ])
       ])
@@ -37977,15 +37983,15 @@ var staticRenderFns = [
         "label",
         {
           staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "email" }
+          attrs: { for: "user_id" }
         },
-        [_vm._v("Email Address")]
+        [_vm._v("User ID")]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
         _c("input", {
           staticClass: "form-control",
-          attrs: { id: "email", type: "email", autofocus: "" }
+          attrs: { id: "user_id", type: "text", autofocus: "" }
         })
       ])
     ])
@@ -37999,7 +38005,7 @@ var staticRenderFns = [
         "label",
         {
           staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "password" }
+          attrs: { for: "user_password" }
         },
         [_vm._v("Password")]
       ),
@@ -38008,38 +38014,13 @@ var staticRenderFns = [
         _c("input", {
           staticClass: "form-control",
           attrs: {
-            id: "password",
+            id: "user_password",
             type: "password",
             name: "password",
             required: "",
             autocomplete: "current-password"
           }
         })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-6 offset-md-4" }, [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: { type: "checkbox", name: "remember", id: "remember" }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            { staticClass: "form-check-label", attrs: { for: "remember" } },
-            [
-              _vm._v(
-                "\n                                        Remember Me\n                                    "
-              )
-            ]
-          )
-        ])
       ])
     ])
   }

@@ -2,13 +2,15 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use  Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +32,17 @@ class User extends Authenticatable
         'user_password', 'remember_token',
     ];
 
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
     public $incrementing = false;
 
     // Koneksi field Foreign
@@ -42,6 +55,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Penyewaan', 'sewa_user', 'user_nik');
     }
 
+    public function getAuthPassword(){
+        return $this->user_password;
+    }
 
     // Pendeklarasian Role
     public function hasRole($roles)
@@ -74,5 +90,6 @@ class User extends Authenticatable
     {
         return (strtolower($role)==strtolower($this->have_role->role_nama)) ? true : false;
     }
+
 
 }

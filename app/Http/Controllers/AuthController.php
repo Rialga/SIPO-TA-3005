@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
 
 class AuthController extends Controller
 {
+
     public function register(Request $request){
         $userid = User::where('user_id',$request->user_id)->count();
         $usermail = User::where([
@@ -37,10 +43,63 @@ class AuthController extends Controller
             $user->user_alamat = $request->user_alamat;
             $user->user_job = $request->user_job;
             $user->user_phone = $request->user_phone;
-            $user->user_password = $request->user_password;
+            $user->user_password = Hash::make($request->user_password);
 
             $user->save();
             return response()->json('Berhasil Menambah Data !');
+        }
+    }
+
+
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('user_id', 'user_password');
+
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'User Id / Password Salah'], 400);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        return response()->json(compact('token'));
+
+    }
+
+    public function getAuthenticatedUser()
+    {
+        try {
+
+            if (! $user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+
+        }
+
+        return response()->json(compact('user'));
+    }
+
+    public function logout(Request $request){
+        try{
+            $this->validate($request,['token'=> 'required']);
+            JWTAuth::invalidate($request->input('token'));
+            return response()->json(['sukses' => true,'pesan'=>'Berhasil Log Out']);
+        }catch(\Exception $e){
+            return response()->json(['sukses'=>false, 'pesan'=>'Gagal Logout'], $e->getStatusCode());
         }
     }
 

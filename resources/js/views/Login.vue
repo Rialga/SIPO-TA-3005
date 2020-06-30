@@ -6,36 +6,25 @@
                     <div class="card-header">Login</div>
 
                     <div class="card-body">
-                        <form method="POST">
+                        <form @submit.prevent="login">
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Email Address</label>
+                                <label for="user_id" class="col-md-4 col-form-label text-md-right">User ID</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" autofocus>
+                                    <input id="user_id" type="text" class="form-control" autofocus>
 
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <label for="user_password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">
+                                    <input id="user_password" type="password" class="form-control" name="password" required autocomplete="current-password">
 
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember">
-
-                                        <label class="form-check-label" for="remember">
-                                            Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
@@ -58,7 +47,17 @@
 </template>
 <script>
     export default {
-        name: "Login.vue"
+        data () {
+            return {
+                user_id: '',
+                user_password: ''
+            }
+        },
+        methods: {
+            login () {
+
+            }
+        }
     }
 </script>
 
