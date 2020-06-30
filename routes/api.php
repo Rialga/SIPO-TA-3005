@@ -37,6 +37,10 @@ Route::get('book', 'UserController@book');
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('logout', 'AuthController@logout');
-    Route::get('bookall', 'UserController@bookAuth');
+//    Route::get('bookall', 'UserController@bookAuth');
     Route::get('user', 'AuthController@getAuthenticatedUser');
+});
+
+Route::group(['middleware' => ['jwt.verify','roles'] ,'roles'=>['Admin']], function() {
+    Route::get('bookall', 'UserController@bookAuth');
 });

@@ -45,9 +45,11 @@ class User extends Authenticatable implements JWTSubject
 
     public $incrementing = false;
 
+    private $have_role;
+
     // Koneksi field Foreign
     public function role() {
-        return $this->belongsTo('App\Role', 'role_id', 'user_role');
+        return $this->belongsTo('App\Role', 'user_role', 'role_id');
     }
 
     // Koneksi PrimaryKey User di ForeignKey Tabel Lain :
@@ -64,7 +66,7 @@ class User extends Authenticatable implements JWTSubject
     {
         $this->have_role = $this->getUserRole();
 
-        if($this->have_role->role_nama == ['Admin','Penyewa']) {
+        if($this->have_role->role_name == ['Admin','Penyewa']) {
             return true;
         }
         if(is_array($roles)){
@@ -88,7 +90,7 @@ class User extends Authenticatable implements JWTSubject
     //Validasi Role User
     private function cekUserRole($role)
     {
-        return (strtolower($role)==strtolower($this->have_role->role_nama)) ? true : false;
+        return (strtolower($role)==strtolower($this->have_role->role_name)) ? true : false;
     }
 
 
