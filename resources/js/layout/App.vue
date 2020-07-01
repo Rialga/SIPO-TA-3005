@@ -18,14 +18,23 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
+                          <template v-if="authenticated">
+                              <a>
+                                  {{user.user_id}}
+                              </a>
+                                <router-link class="nav-link" :to="{name:'register'}">
+                                    Logout
+                                </router-link>
+                            </template>
 
-                            <router-link class="nav-link" :to="{name:'login'}">
-                                Login
-                            </router-link>
-                            <router-link class="nav-link" :to="{name:'register'}">
-                                Register
-                            </router-link>
-
+                            <template v-else>
+                                <router-link class="nav-link" :to="{name:'login'}">
+                                    Login
+                                </router-link>
+                                <router-link class="nav-link" :to="{name:'register'}">
+                                    Register
+                                </router-link>
+                            </template>
 
                         </ul>
 
@@ -40,8 +49,17 @@
     </div>
 </template>
 <script>
+    import { mapGetters } from 'vuex'
     export default {
-        name: "App.vue"
+        name: "App.vue",
+
+        computed: {
+            ...mapGetters({
+                'authenticated': 'auth/authenticated',
+                'user': 'auth/user'
+            })
+        }
+
     }
 </script>
 

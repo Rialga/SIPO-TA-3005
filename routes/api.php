@@ -33,7 +33,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix ('auth')->group (function () {
     Route::post('register', 'AuthController@register');
     Route::post('login', 'AuthController@login');
-    Route::get('book', 'UserController@book');
 });
 
 Route::group(['middleware' => ['jwt.verify']], function() {
@@ -43,5 +42,5 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 
 Route::group(['middleware' => ['jwt.verify','roles'] ,'roles'=>['Admin']], function() {
-    Route::get('welcome', 'UserController@bookAuth');
+    Route::get('profile', 'UserController@profile');
 });

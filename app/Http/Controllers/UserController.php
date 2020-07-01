@@ -6,12 +6,9 @@ use Illuminate\Http\Request;
 use Auth;
 class UserController extends Controller
 {
-    public function book() {
-        $data = "Data All Book";
-        return response()->json($data, 200);
-    }
-    public function bookAuth() {
-        $data = "Welcome " . Auth::user()->user_nama;
+
+    public function profile() {
+        $data = Auth::user();
         return response()->json($data, 200);
     }
 

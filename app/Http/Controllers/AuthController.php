@@ -102,11 +102,13 @@ class AuthController extends Controller
 //            return response()->json(['sukses'=>false, 'pesan'=>'Gagal Logout'], $e->getStatusCode());
 //        }
 
-        JWTAuth::invalidate();
-        return response([
-            'status' => 'success',
-            'msg' => 'Logged out Successfully.'
-        ], 200);
+//        JWTAuth::invalidate();
+//        return response([
+//            'status' => 'success',
+//            'msg' => 'Logged out Successfully.'
+//        ], 200);
+
+        auth()->logout();
     }
 
 }
