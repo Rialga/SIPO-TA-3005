@@ -6,12 +6,12 @@
                     <div class="card-header">Login</div>
 
                     <div class="card-body">
-                        <form @submit.prevent="login">
+                        <form @submit.prevent="submit">
                             <div class="form-group row">
                                 <label for="user_id" class="col-md-4 col-form-label text-md-right">User ID</label>
 
                                 <div class="col-md-6">
-                                    <input id="user_id" type="text" class="form-control" autofocus>
+                                    <input id="user_id" type="text" class="form-control" autofocus v-model = "form.user_id">
 
                                 </div>
                             </div>
@@ -20,7 +20,7 @@
                                 <label for="user_password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="user_password" type="password" class="form-control" name="password" required autocomplete="current-password">
+                                    <input id="user_password" type="password" class="form-control" name="password" required autocomplete="current-password" v-model = "form.user_password">
 
                                 </div>
                             </div>
@@ -46,21 +46,30 @@
     </div>
 </template>
 <script>
-    export default {
-        data () {
+    import { mapActions } from 'vuex'
+     export default {
+         name: 'login',
+
+         components: {
+             //
+         },
+         data () {
             return {
-                user_id: '',
-                user_password: ''
+                form: {
+                    user_id: '',
+                    user_password: '',
+                }
             }
         },
-        methods: {
-            login () {
 
+        methods: {
+            ...mapActions({
+                'Login': 'auth/Login'
+            }),
+
+            submit(){
+                this.Login(this.form)
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

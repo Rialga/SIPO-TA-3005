@@ -1,6 +1,8 @@
+
 import Login from './views/Login'
 import Register from './views/Register'
 import Home from './views/Home'
+import Dashboard from './views/LoginYogs'
 
 
 export const routes =[
@@ -18,6 +20,12 @@ export const routes =[
         path: '/',
         name: 'home',
         component: Home
+    },
+    {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard
     }
 ]
+
 

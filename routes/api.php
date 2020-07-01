@@ -30,10 +30,11 @@ use Illuminate\Support\Facades\Route;
 //
 //});
 
-
-Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
-Route::get('book', 'UserController@book');
+Route::prefix ('auth')->group (function () {
+    Route::post('register', 'AuthController@register');
+    Route::post('login', 'AuthController@login');
+    Route::get('book', 'UserController@book');
+});
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('logout', 'AuthController@logout');
@@ -42,5 +43,5 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 
 Route::group(['middleware' => ['jwt.verify','roles'] ,'roles'=>['Admin']], function() {
-    Route::get('bookall', 'UserController@bookAuth');
+    Route::get('welcome', 'UserController@bookAuth');
 });

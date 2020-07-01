@@ -125,7 +125,7 @@
             register(){
 
                 this.axios
-                    .post('http://localhost:8000/api/auth/register', this.registerdata)
+                    .post('/auth/register', this.registerdata)
                     .then(response => (
                         console.log(response.data),
                         this.pesan = response.data,
